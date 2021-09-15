@@ -45,8 +45,10 @@ System::System(const std::string& strSettingsFile)
     std::cout << "\n" <<
     "R-VIO: Robocentric visual-inertial odometry" << "\n" << "\n"
     "Copyright (C) 2019 Zheng Huai and Guoquan Huang" << "\n" <<
-    "Robot Perception and Navigation Group, University of Delaware." << "\n" << "\n";
+    "Robot Perception and Navigation Group, University of Delaware." << "\n" << "\n" <<
+    "Modified by R. Kent James <kent@caspia.com> in 2021" << "\n" << "\n";
 
+    ROS_INFO_STREAM("rvio starting up\n");
     // Read settings file
     cv::FileStorage fsSettings(strSettingsFile, cv::FileStorage::READ);
     if (!fsSettings.isOpened())

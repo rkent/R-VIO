@@ -74,6 +74,7 @@ void Updater::update(Eigen::VectorXd& xk1k,
                      std::vector<std::list<cv::Point2f> >& vlFeatMeasForUpdate)
 {
     // Interact with ROS rviz
+    ROS_INFO("Updater::update");
     visualization_msgs::Marker cloud;
     cloud.header.frame_id = "imu";
     cloud.ns = "points";

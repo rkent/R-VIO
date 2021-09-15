@@ -53,6 +53,7 @@ public:
 
 void ImageGrabber::GrabImage(const sensor_msgs::ImageConstPtr& msg)
 {
+    ROS_INFO("Got Image");
     static int lastseq = -1;
     if ((int)msg->header.seq!=lastseq+1 && lastseq!=-1)
         ROS_DEBUG("Image message drop! curr seq: %d expected seq: %d.", msg->header.seq, lastseq+1);
@@ -115,6 +116,7 @@ int main(int argc, char **argv)
     ImuGrabber igb2(&Sys);
 
     ros::NodeHandle nodeHandler;
+    ROS_INFO("Subscribing to /camera/image_raw and /imu");
     ros::Subscriber image_sub = nodeHandler.subscribe("/camera/image_raw", 1, &ImageGrabber::GrabImage, &igb1);
     ros::Subscriber imu_sub = nodeHandler.subscribe("/imu", 100, &ImuGrabber::GrabImu, &igb2);
 
